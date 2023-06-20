@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import SideBar from './SideBar';
 import dots from '../assets/dots.png';
+import '../styles/main.css';
 import left from '../assets/arrow-left.png';
 import right from '../assets/arrow-right.png';
 
