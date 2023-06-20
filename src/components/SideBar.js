@@ -17,7 +17,7 @@ const SideBar = () => (
         <Link to="/add_event" className="link">ADD EVENT</Link>
       </li>
       <li className="sidebar-item">
-        <Link to="/eventss/delete" className="link">DELETE EVENT</Link>
+        <Link to="/events/delete" className="link">DELETE EVENT</Link>
       </li>
       <li className="sidebar-item">
         <Link to="/reserve" className="link">RESERVE</Link>
@@ -26,6 +26,7 @@ const SideBar = () => (
         <Link to="/reservations" className="link">MY RESERVATIONS</Link>
       </li>
     </ul>
+    {/* line 30 needs to be checked */}
     <Link to="/signin" className="link sign-out-side">Sign Out</Link>
   </nav>
 );
