@@ -14,7 +14,7 @@ const SideBar = () => (
     </div>
     <ul className="sidebar-list">
       <li className="sidebar-item">
-        <Link to="/main" className="link">
+        <Link to="/" className="link">
           EVENTS
         </Link>
       </li>
