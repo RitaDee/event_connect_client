@@ -115,7 +115,7 @@ const SignInComponent = () => {
       sessionStorage.setItem('token', token);
       sessionStorage.setItem('userId', user.id);
       setMessage('Sign in successful' || '');
-      navigate('/');
+      navigate('/main');
     } catch (error) {
       console.error('Sign in failed:', error);
       setMessage('Sign in failed' || '');

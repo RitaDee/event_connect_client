@@ -6,6 +6,7 @@ import Body from './components/Body';
 import SignIn from './components/SigIn';
 import SignUp from './components/SignUp';
 import Index from './pages/events';
+import Main from './components/Main';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/" element={<Body />} />
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/main" element={<Main />} />
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<Index />} />
         <Route path="/events/:id" element={<EventDetails />} />
