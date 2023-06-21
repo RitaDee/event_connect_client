@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import SideBar from './SideBar';
 import dots from '../assets/dots.png';
 import '../styles/main.css';
 import left from '../assets/arrow-left.png';
@@ -22,7 +21,6 @@ const Main = () => {
 
   return (
     <div className="main-bar">
-      <SideBar />
       <div className="main">
         <h1 className="event-list-title">BROWSE EVENTS</h1>
         <p className="event-list-subtitle">Select a event to see details or reserve</p>

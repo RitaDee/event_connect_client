@@ -1,17 +1,16 @@
+import { Grid, GridItem } from '@chakra-ui/react';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import styled from 'styled-components';
 import Sidebar from './SideBar';
 
 const Layout = () => (
-  <StyledDiv>
-    <Sidebar />
-    <Outlet />
-  </StyledDiv>
+  <Grid templateColumns="repeat(4, 2fr)">
+    <GridItem colSpan={1}>
+      <Sidebar />
+    </GridItem>
+    <GridItem colSpan={3}>
+      <Outlet />
+    </GridItem>
+  </Grid>
 );
-
-const StyledDiv = styled(div)`
-  display: flex;
-  justify-content: space-between;
-`;
 export default Layout;
