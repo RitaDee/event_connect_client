@@ -33,21 +33,21 @@ const EventDetails = () => {
         pb={150}
       >
         <Heading variant="primary">{event?.title}</Heading>
-        <Flex bg="gray" justify="space-between">
+        <Flex bg="gray" justify="space-between" height="14px" padding={8} alignItems="center" mt={10}>
           Date
           {' '}
           <Flex>
             {event?.date}
           </Flex>
         </Flex>
-        <Flex>
+        <Flex justify="space-between" height="14px" padding={8} alignItems="center" mt={10}>
           Time
           {' '}
           <Flex>
             {event?.time}
           </Flex>
         </Flex>
-        <Flex bg="gray" justify="space-between">
+        <Flex bg="gray" justify="space-between" height="14px" padding={8} alignItems="center" mt={10}>
           Description
           {' '}
           <Flex>
