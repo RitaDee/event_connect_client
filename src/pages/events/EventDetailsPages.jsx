@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+// import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchEventDetail } from '../../redux/slice/eventDetailSlice';
 
-function EventDetailsPages() {
+const EventDetails = () => {
+  const { id } = useParams();
+  const event = useSelector((state) => state.eventDetail.event);
+  // const isLoading = useSelector((state) => state.eventDetail.loading);
+  // const error = useSelector((state) => state.eventDetail.error);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchEventDetail(id));
+  }, [dispatch, id]);
+
   return (
     <div>
-      EventDetailsPages Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Minus aut at quam hic dolorum maxime sed ex voluptatum cumque ducimus
-      corporis sunt optio velit quod quis qui dolor vitae iusto, quos
-      repellendus facere. Repudiandae dolores autem vero? Qui eius labore sed
-      sint nostrum accusantium, nulla quae possimus et, laudantium quaerat
-      veritatis repudiandae aut iste assumenda commodi laborum, cum illum
-      officiis harum eveniet modi optio. Architecto veniam earum nihil
-      exercitationem veritatis optio eligendi tempore deserunt illum odio velit
-      laudantium dolorem dolores, explicabo cumque accusamus et in quos fugit
-      ipsum! Aut similique repellendus magni sint itaque beatae fugiat corrupti
-      iusto architecto deleniti.
+      <h2 className="event_title">{event?.title}</h2>
+      <p className="event_date">
+        Date:
+        {event?.date}
+      </p>
+      <p className="event_time">
+        Time:
+        {event?.time}
+      </p>
+      <p className="event_description">
+        Description:
+        {event?.description}
+      </p>
     </div>
   );
-}
+};
 
-export default EventDetailsPages;
+export default EventDetails;
