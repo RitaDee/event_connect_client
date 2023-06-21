@@ -1,15 +1,16 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Main from './components/Main';
-import EventDetails from './pages/events/EventDetailsPages';
+import { Routes, Route } from 'react-router-dom';
+import EventDetails from './pages/events/EventDetails';
+import Layout from './components/Layout';
+import Index from './pages/events';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Main />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Index />} />
         <Route path="/events/:id" element={<EventDetails />} />
-      </Routes>
-    </Router>
+      </Route>
+    </Routes>
   );
 }
 

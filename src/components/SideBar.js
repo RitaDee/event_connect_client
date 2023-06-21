@@ -14,23 +14,35 @@ const SideBar = () => (
     </div>
     <ul className="sidebar-list">
       <li className="sidebar-item">
-        <Link to="/main" className="link">EVENTS</Link>
+        <Link to="/" className="link">
+          EVENTS
+        </Link>
       </li>
       <li className="sidebar-item">
-        <Link to="/add_event" className="link">ADD EVENT</Link>
+        <Link to="/add_event" className="link">
+          ADD EVENT
+        </Link>
       </li>
       <li className="sidebar-item">
-        <Link to="/events/delete" className="link">DELETE EVENT</Link>
+        <Link to="/events/delete" className="link">
+          DELETE EVENT
+        </Link>
       </li>
       <li className="sidebar-item">
-        <Link to="/reserve" className="link">RESERVE</Link>
+        <Link to="/reserve" className="link">
+          RESERVE
+        </Link>
       </li>
       <li className="sidebar-item">
-        <Link to="/reservations" className="link">MY RESERVATIONS</Link>
+        <Link to="/reservations" className="link">
+          MY RESERVATIONS
+        </Link>
       </li>
     </ul>
     {/* line 30 needs to be checked */}
-    <Link to="/signin" className="link sign-out-side">Sign Out</Link>
+    <Link to="/signin" className="link sign-out-side">
+      Sign Out
+    </Link>
   </nav>
 );
 
