@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/signup.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUpComponent = () => {
   const [name, setName] = useState('');
@@ -11,6 +11,7 @@ const SignUpComponent = () => {
   const [password, setPassword] = useState('');
   //   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   //   const handleSignUp = async () => {
   //     try {
@@ -45,6 +46,7 @@ const SignUpComponent = () => {
       console.log('Sign up successful:', response.data);
       // Update message state with the success message from response
       setMessage('Sign up successful');
+      navigate('/main');
     } catch (error) {
       console.error('Sign up failed:', error);
       // Update message state with the error message from response
