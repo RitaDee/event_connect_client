@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import {
-  Card, Flex, Heading, Image, Button,
+  Card, Flex, Heading, Image, Button, Grid,
 } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
+import ProgressBar from '../../components/circularBar';
 import { fetchEventDetail } from '../../redux/slice/eventDetailSlice';
-// import bananaImage from '../../images/banana.png';
 import left from '../../assets/arrow-left.png';
 
 const EventDetails = () => {
@@ -21,57 +21,54 @@ const EventDetails = () => {
 
   const scrollLeft = () => {
     if (eventsContainerRef.current) {
-      eventsContainerRef.current.scrollLeft
-        -= eventsContainerRef.current.offsetWidth / 3;
+      eventsContainerRef.current.scrollLeft -= eventsContainerRef.current.offsetWidth / 3;
     }
   };
 
   return (
-    <Flex justify="space-around" alignItems="center" p="4">
-      <Card pt={180}>
-        <Image width={500} src={event?.images} />
-      </Card>
+    <Grid templateColumns="1fr 2fr" gap={8} p={4} width="100%" boxSizing="border-box">
+      <Flex flexDirection="column" mr={8}>
+        <Card pt={180}>
+          <Image width={500} src={event?.images} />
+        </Card>
+      </Flex>
 
-      <Flex flexDirection="column" pb={150}>
-        <Heading
-          variant="primary"
-          style={{ alignSelf: 'flex-end' }}
-        >
+      <Flex flexDirection="column" pt={80} width="80%" pl={70}>
+        <Heading variant="primary" alignSelf="flex-end">
           {event?.title}
         </Heading>
-        <Flex
-          bg="gray"
-          justify="space-between"
-          height="14px"
-          padding={8}
-          alignItems="center"
-          mt={10}
-        >
-          Date
-          <Flex>{event?.date}</Flex>
+        <Flex bg="gray" justify="space-between" p={8} mt={10}>
+          <span>Date</span>
+          <span>{event?.date}</span>
+        </Flex>
+        <Flex justify="space-between" p={8} mt={10}>
+          <span>Time</span>
+          <span>{event?.time}</span>
+        </Flex>
+        <Flex bg="gray" justify="space-between" p={8} mt={10}>
+          <span>Description</span>
+          <span>{event?.description}</span>
         </Flex>
         <Flex
-          justify="space-between"
-          height="14px"
-          padding={8}
-          alignItems="center"
+          pt={50}
+          pl="80%"
           mt={10}
         >
-          Time
-          <Flex>{event?.time}</Flex>
+          <ProgressBar />
         </Flex>
-        <Flex
-          bg="gray"
-          justify="space-between"
-          height="14px"
-          padding={8}
+        <Button
+          p={8}
+          ml="auto"
+          marginTop="50px"
           alignItems="center"
-          mt={10}
+          textAlign="center"
+          // pt={60}
+          borderRadius={50}
+          width="30%"
         >
-          Description
-          <Flex>{event?.description}</Flex>
-        </Flex>
-        <Flex>
+          Book Event
+        </Button>
+        <Flex justify="flex-end">
           <Button
             onClick={scrollLeft}
             type="button"
@@ -87,11 +84,11 @@ const EventDetails = () => {
             bottom={-9}
             mb={30}
           >
-            <img src={left} alt="arrow-left" />
+            <Image src={left} alt="arrow-left" />
           </Button>
         </Flex>
       </Flex>
-    </Flex>
+    </Grid>
   );
 };
 
