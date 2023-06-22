@@ -5,7 +5,7 @@ import {
 } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchEventDetail } from '../../redux/slice/eventDetailSlice';
-import bananaImage from '../../images/banana.png';
+// import bananaImage from '../../images/banana.png';
 import left from '../../assets/arrow-left.png';
 
 const EventDetails = () => {
@@ -29,7 +29,7 @@ const EventDetails = () => {
   return (
     <Flex justify="space-around" alignItems="center" p="4">
       <Card pt={180}>
-        <Image width={500} src={bananaImage} />
+        <Image width={500} src={event?.images} />
       </Card>
 
       <Flex flexDirection="column" pb={150}>
@@ -87,7 +87,7 @@ const EventDetails = () => {
             bottom={-9}
             mb={30}
           >
-            <img src={left} alt="arrow-left" style={{ color: '#F2FFF1' }} />
+            <img src={left} alt="arrow-left" />
           </Button>
         </Flex>
       </Flex>
