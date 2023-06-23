@@ -6,7 +6,7 @@ import '../styles/style.css';
 import '../styles/main.css';
 
 const SideBar = () => (
-  <nav className="sidebar">
+  <nav>
     <div className="sidebar-header">
       <div className="sidebar-header-icon">
         <img className="logo" src={logo} alt="Our logo" />
