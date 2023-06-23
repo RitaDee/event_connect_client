@@ -1,5 +1,4 @@
-/* eslint-disable */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Box,
@@ -12,7 +11,9 @@ import {
   Flex,
   Link,
 } from '@chakra-ui/react';
-import { FaPlay, FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa';
+import {
+  FaPlay, FaTwitter, FaInstagram, FaFacebook,
+} from 'react-icons/fa';
 import styled from 'styled-components';
 import {
   CarouselProvider,
@@ -26,21 +27,19 @@ import dots from '../../assets/dots.png';
 import '../../styles/main.css';
 import { fetchEvents } from '../../redux/slice/eventSlice';
 
-const SocialIcons = () => {
-  return (
-    <Flex mt={4} justify="center">
-      <Link href="#" mr={2}>
-        <FaTwitter size={24} />
-      </Link>
-      <Link href="#" mr={2}>
-        <FaInstagram size={24} />
-      </Link>
-      <Link href="#" mr={2}>
-        <FaFacebook size={24} />
-      </Link>
-    </Flex>
-  );
-};
+const SocialIcons = () => (
+  <Flex mt={4} justify="center">
+    <Link href="https://twitter.com" mr={2}>
+      <FaTwitter size={24} />
+    </Link>
+    <Link href="https://twitter.com" mr={2}>
+      <FaInstagram size={24} />
+    </Link>
+    <Link href="https://twitter.com" mr={2}>
+      <FaFacebook size={24} />
+    </Link>
+  </Flex>
+);
 
 const Index = () => {
   const events = useSelector((state) => state.events.data);
@@ -68,13 +67,12 @@ const Index = () => {
         >
           <Slider>
             {events.map((item, idx) => (
-              <Slide index={idx}>
+              <Slide index={idx} key={item.description}>
                 <Box maxWidth="400px">
                   <StyledCard
                     boxShadow="md"
                     borderRadius="md"
                     border="none"
-                    // color="white"
                   >
                     <Image
                       src={item.images}
@@ -112,7 +110,8 @@ const Index = () => {
               />
             </StyledDivRight>
           </ButtonNext>
-        </CarouselProvider>{' '}
+        </CarouselProvider>
+        {' '}
       </div>
     </StyledContainer>
   );
