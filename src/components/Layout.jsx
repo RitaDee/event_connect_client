@@ -4,11 +4,11 @@ import { Outlet } from 'react-router-dom';
 import Sidebar from './SideBar';
 
 const Layout = () => (
-  <Grid templateColumns="repeat(4, 2fr)">
+  <Grid templateColumns="repeat(6, 1fr)">
     <GridItem colSpan={1}>
       <Sidebar />
     </GridItem>
-    <GridItem colSpan={3}>
+    <GridItem colSpan={5}>
       <Outlet />
     </GridItem>
   </Grid>
