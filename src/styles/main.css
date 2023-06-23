@@ -1,6 +1,6 @@
 .main {
-  padding-top: 60px;
-  padding-left: 190px;
+  padding: 60px;
+  /* padding-left: 190px; */
 }
 
 .events-container {
