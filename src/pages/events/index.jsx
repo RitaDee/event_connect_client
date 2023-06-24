@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link as link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Box,
@@ -68,12 +69,15 @@ const Index = () => {
           <Slider>
             {events.map((item, idx) => (
               <Slide index={idx} key={item.description}>
-                <Box maxWidth="400px">
-                  <StyledCard
-                    boxShadow="md"
-                    borderRadius="md"
-                    border="none"
-                  >
+                <Box
+                  maxWidth="400px"
+                  as={link}
+                  to={`/events/${item.id}`}
+                  cursor="pointer"
+                  textDecoration="none"
+                  _hover={{ textDecoration: 'none' }}
+                >
+                  <StyledCard boxShadow="md" borderRadius="md" border="none">
                     <Image
                       src={item.images}
                       alt="Image description"
@@ -161,6 +165,6 @@ const StyledDivRight = styled.div`
 const StyledCard = styled(Card)`
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin:  0 10px;
+  margin: 0 10px;
   height: 400px;
 `;
