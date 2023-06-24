@@ -2,10 +2,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const apiUrl = 'http://127.0.0.1:3000/api/v1/tickets';
+const apiUrl = 'http://127.0.0.1:3000/api/v1/reservations';
 
-export const fetchtickets = createAsyncThunk(
-  'ticket/fetchtickets',
+export const fetchReservations = createAsyncThunk(
+  'reservation/fetchreservations',
   async (id) => {
     const response = await axios.get(`${apiUrl}`);
     const data = response.data.filter((item) => item.event_id === Number(id));
@@ -13,17 +13,16 @@ export const fetchtickets = createAsyncThunk(
   }
 );
 
-export const createTicket = createAsyncThunk(
-  'ticket/fetchtickets',
+export const createReservation = createAsyncThunk(
+  'reservation/fetchreservations',
   async (data) => {
-    const response = await axios.post(`${apiUrl}`, { ticket: data });
+    const response = await axios.post(`${apiUrl}`, { reservation: data });
     return response.data;
   }
 );
 
-
-const ticketSlice = createSlice({
-  name: 'tickets',
+const reservationSlice = createSlice({
+  name: 'reservations',
   initialState: {
     data: [],
     loading: false,
@@ -33,20 +32,20 @@ const ticketSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchtickets.pending, (state) => {
+      .addCase(fetchReservations.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchtickets.fulfilled, (state, action) => {
+      .addCase(fetchReservations.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
         state.status = action.payload.status;
       })
-      .addCase(fetchtickets.rejected, (state, action) => {
+      .addCase(fetchReservations.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
   },
 });
 
-export default ticketSlice.reducer;
+export default reservationSlice.reducer;

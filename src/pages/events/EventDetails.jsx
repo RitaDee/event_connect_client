@@ -19,17 +19,22 @@ import { fetchEventDetail } from '../../redux/slice/eventDetailSlice';
 import left from '../../assets/arrow-left.png';
 import { styled } from 'styled-components';
 import Modal from '../../components/Modal';
+import BookModal from './components/BookModal'
+import { fetchtickets } from '../../redux/slice/ticketSlice';
 
 const EventDetails = () => {
   const { id } = useParams();
   const event = useSelector((state) => state.eventDetail.event);
   const dispatch = useDispatch();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen: isOpenBook, onOpen: onOpenBook, onClose: onCloseBook } = useDisclosure();
+
 
   const eventsContainerRef = useRef(null);
 
   useEffect(() => {
     dispatch(fetchEventDetail(id));
+    dispatch(fetchtickets(id))
   }, [dispatch, id]);
 
   const scrollLeft = () => {
@@ -71,13 +76,18 @@ const EventDetails = () => {
           <Flex>
             {' '}
             <StyledButton onClick={onOpen}>Add Ticket</StyledButton>
-            <StyledButton>Book Event</StyledButton>
+            <StyledButton onClick={onOpenBook}>Book Event</StyledButton>
           </Flex>
         </GridItem>
         <Modal
           isOpen={isOpen}
           onOpen={onOpen}
           onClose={onClose}
+        />
+        <BookModal
+          isOpen={isOpenBook}
+          onOpen={onOpenBook}
+          onClose={onCloseBook}
         />
         <Flex justify="flex-end">
           <Button
@@ -113,7 +123,6 @@ const StyledButton = styled(Button)`
   align-items: center;
   text-align: center;
   border-radius: 50px;
-  width: 30%;
-  padding: 8px;
+  padding: 18px;
   cursor: pointer;
 `;
