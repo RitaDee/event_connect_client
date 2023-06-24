@@ -14,7 +14,7 @@ export const fetchtickets = createAsyncThunk(
 );
 
 export const createTicket = createAsyncThunk(
-  'ticket/fetchtickets',
+  'ticket/createTicket',
   async (data) => {
     const response = await axios.post(`${apiUrl}`, { ticket: data });
     return response.data;
@@ -43,6 +43,19 @@ const ticketSlice = createSlice({
         state.status = action.payload.status;
       })
       .addCase(fetchtickets.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(createTicket.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(createTicket.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = [...state.data, action.payload]
+        state.status = action.payload.status;
+      })
+      .addCase(createTicket.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

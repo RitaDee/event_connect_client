@@ -26,6 +26,7 @@ const initialValues = {
 const ModalComponent = ({ isOpen, onClose, onOpen }) => {
   const [state, setState] = useState(initialValues);
   const tickets = useSelector((state) => state.tickets.data);
+  console.log(tickets, "tickets")
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const dispatch = useDispatch();
@@ -34,7 +35,8 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
 
   const handleSubmit = async () => {
     const res = await dispatch(createReservation(state));
-    if (res.payload) {
+    console.log(res, "resps")
+    if (res.payload.status === 201) {
       toast({
         description: `Ticket has been reserved for you successfully`,
         status: 'success',
@@ -80,7 +82,7 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
                 setState((prev) => ({ ...prev, ticket_id: e.target.value }))
               }
             >
-              {tickets.map((item) => (
+              {tickets?.map((item) => (
                 <option value={item.id}>
                   {item.ticket_type} (${item.price})
                 </option>

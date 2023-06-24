@@ -5,16 +5,16 @@ import axios from 'axios';
 const apiUrl = 'http://127.0.0.1:3000/api/v1/reservations';
 
 export const fetchReservations = createAsyncThunk(
-  'reservation/fetchreservations',
+  'reservation/fetchReservations',
   async (id) => {
     const response = await axios.get(`${apiUrl}`);
-    const data = response.data.filter((item) => item.event_id === Number(id));
+    const data = response.data.filter((item) => item.user_id === Number(id));
     return data;
   }
 );
 
 export const createReservation = createAsyncThunk(
-  'reservation/fetchreservations',
+  'reservation/createReservations',
   async (data) => {
     const response = await axios.post(`${apiUrl}`, { reservation: data });
     return response.data;

@@ -5,8 +5,8 @@ import Layout from './components/Layout';
 import Body from './components/Body';
 import SignIn from './components/SigIn';
 import SignUp from './components/SignUp';
-import Index from './pages/events';
-// import Main from './components/Main';
+import Events from './pages/events';
+import Reservations from './pages/reservation';
 
 function App() {
   return (
@@ -15,8 +15,9 @@ function App() {
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/" element={<Layout />}>
-        <Route path="/events" element={<Index />} />
+        <Route path="/events" element={<Events />} />
         <Route path="/events/:id" element={<EventDetails />} />
+        <Route path="/reservations" element={<Reservations />} />
       </Route>
     </Routes>
   );

@@ -40,7 +40,7 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
 
   const handleSubmit = async() => {
     const res = await dispatch(createTicket(state));
-    if(res.payload.status === 201){
+    if(res){
       toast({
         description: `${state.ticket_type} ticket has been created`,
         status: "success",
