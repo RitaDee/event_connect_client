@@ -16,6 +16,7 @@ import {
   Input,
 } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
+import { useToast } from '@chakra-ui/react';
 
 const initialValues = {
   user_id: null,
@@ -30,14 +31,30 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const dispatch = useDispatch();
+  const toast = useToast()
   const { id } = useParams();
 
   const handleChange = (e) => {
     setState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = () => {
-    dispatch(createTicket(state));
+  const handleSubmit = async() => {
+    const res = await dispatch(createTicket(state));
+    if(res.payload.status === 201){
+      toast({
+        description: `${state.ticket_type} ticket has been created`,
+        status: "success",
+        title: "Ticket Created",
+      });
+    }
+    else {
+      toast({
+        description: `${state.ticket_type} could not be created`,
+        status: "error",
+        title: "Ticket not Created",
+      });
+    }
+    onClose()
   };
 
   useEffect(() => {

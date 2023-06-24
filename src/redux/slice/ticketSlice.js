@@ -16,8 +16,7 @@ export const createTicket = createAsyncThunk(
   'ticket/fetchtickets',
   async (data) => {
     const response = await axios.post(`${apiUrl}`, { ticket: data });
-    console.log(response, 'this is the response');
-    return response.data;
+    return response;
   },
 );
 
@@ -27,6 +26,7 @@ const ticketSlice = createSlice({
     data: [],
     loading: false,
     error: null,
+    status: null,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -37,7 +37,8 @@ const ticketSlice = createSlice({
       })
       .addCase(fetchtickets.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload;
+        state.data = action.payload.data;
+        state.status = action.payload.status;
       })
       .addCase(fetchtickets.rejected, (state, action) => {
         state.loading = false;
