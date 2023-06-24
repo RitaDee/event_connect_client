@@ -17,7 +17,7 @@ export const createTicket = createAsyncThunk(
   'ticket/createTicket',
   async (data) => {
     const response = await axios.post(`${apiUrl}`, { ticket: data });
-    return response.data;
+    return response;
   }
 );
 

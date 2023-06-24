@@ -45,6 +45,7 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
         description: `${state.ticket_type} ticket has been created`,
         status: "success",
         title: "Ticket Created",
+        position: "top"
       });
     }
     else {
@@ -52,6 +53,7 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
         description: `${state.ticket_type} could not be created`,
         status: "error",
         title: "Ticket not Created",
+        position: "top"
       });
     }
     onClose()
