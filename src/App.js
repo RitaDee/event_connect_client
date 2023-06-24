@@ -7,6 +7,7 @@ import SignIn from './components/SigIn';
 import SignUp from './components/SignUp';
 import Events from './pages/events';
 import Reservations from './pages/reservation';
+import EventForm from './pages/events/CreateEvent';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/" element={<Layout />}>
         <Route path="/events" element={<Events />} />
+        <Route path="/add_event" element={<EventForm />} />
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/reservations" element={<Reservations />} />
       </Route>

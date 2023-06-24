@@ -39,6 +39,15 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
   };
 
   const handleSubmit = async() => {
+    if (!state.price || !state.quantity || !state.ticket_type) {
+      toast({
+        description: 'Please fill in all the required fields',
+        status: 'error',
+        title: 'Incomplete Form',
+        position: 'top',
+      });
+      return; // Prevent form submission
+    }
     const res = await dispatch(createTicket(state));
     if(res){
       toast({
@@ -87,6 +96,7 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
               value={state.price}
               onChange={handleChange}
               name="price"
+              required
             />
           </FormControl>
           <FormControl mt={4}>
@@ -97,6 +107,7 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
               value={state.quantity}
               onChange={handleChange}
               name="quantity"
+              required
             />
           </FormControl>
           <FormControl mt={4}>
@@ -106,6 +117,7 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
               value={state.ticket_type}
               onChange={handleChange}
               name="ticket_type"
+              required
             />
           </FormControl>
         </ModalBody>

@@ -81,6 +81,7 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
               onChange={(e) =>
                 setState((prev) => ({ ...prev, ticket_id: e.target.value }))
               }
+              required
             >
               {tickets?.map((item) => (
                 <option value={item.id}>

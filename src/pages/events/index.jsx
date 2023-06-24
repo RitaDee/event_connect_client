@@ -63,7 +63,7 @@ const Index = () => {
         <CarouselProvider
           naturalSlideWidth={100}
           naturalSlideHeight={125}
-          totalSlides={6}
+          totalSlides={20}
           visibleSlides={3}
         >
           <Slider>

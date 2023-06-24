@@ -1,4 +1,3 @@
-// eslint-disable
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -9,6 +8,14 @@ export const fetchEvents = createAsyncThunk(
   async () => {
     const response = await axios.get(`${apiUrl}`);
     return response.data;
+  },
+);
+
+export const createEvent = createAsyncThunk(
+  'eventDetail/createEvent',
+  async (data) => {
+    const response = await axios.post(`${apiUrl}`, { event: { ...data } });
+    return response;
   },
 );
 
@@ -31,6 +38,18 @@ const eventSlice = createSlice({
         state.data = action.payload;
       })
       .addCase(fetchEvents.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(createEvent.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(createEvent.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = [...state.data, action.payload];
+      })
+      .addCase(createEvent.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
