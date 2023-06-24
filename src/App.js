@@ -5,8 +5,9 @@ import Layout from './components/Layout';
 import Body from './components/Body';
 import SignIn from './components/SigIn';
 import SignUp from './components/SignUp';
-import Index from './pages/events';
-import Main from './components/Main';
+import Events from './pages/events';
+import Reservations from './pages/reservation';
+import EventForm from './pages/events/CreateEvent';
 
 function App() {
   return (
@@ -14,10 +15,11 @@ function App() {
       <Route path="/" element={<Body />} />
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/main" element={<Main />} />
       <Route path="/" element={<Layout />}>
-        <Route path="/" element={<Index />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/add_event" element={<EventForm />} />
         <Route path="/events/:id" element={<EventDetails />} />
+        <Route path="/reservations" element={<Reservations />} />
       </Route>
     </Routes>
   );

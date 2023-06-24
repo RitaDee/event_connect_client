@@ -115,7 +115,7 @@ const SignInComponent = () => {
       sessionStorage.setItem('token', token);
       sessionStorage.setItem('userId', user.id);
       setMessage('Sign in successful' || '');
-      navigate('/main');
+      navigate('/events');
     } catch (error) {
       console.error('Sign in failed:', error);
       setMessage('Sign in failed' || '');
@@ -126,11 +126,14 @@ const SignInComponent = () => {
   const handleSignOut = async () => {
     const thetoken = sessionStorage.getItem('token');
     try {
-      const response = await axios.delete('http://127.0.0.1:3000/api/v1/users/sign_out', {
-        headers: {
-          Authorization: thetoken,
+      const response = await axios.delete(
+        'http://127.0.0.1:3000/api/v1/users/sign_out',
+        {
+          headers: {
+            Authorization: thetoken,
+          },
         },
-      });
+      );
       console.log('Sign out successful:', response.data);
       sessionStorage.clear();
       setMessage(response.data.message || '');
@@ -149,12 +152,32 @@ const SignInComponent = () => {
       <h1 className="sign-in-title"> Welcome, please sign in to continue</h1>
       <p>{message}</p>
       <div className="sign-in-inputs">
-        <input className="email-input" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input className="password-input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input
+          className="email-input"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          className="password-input"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
       </div>
       <div className="btn">
-        <button className="sign-in-button" type="button" onClick={handleSignIn}>Sign In</button>
-        <button className="sign-out-button" type="button" onClick={handleSignOut}>Sign Out</button>
+        <button className="sign-in-button" type="button" onClick={handleSignIn}>
+          Sign In
+        </button>
+        <button
+          className="sign-out-button"
+          type="button"
+          onClick={handleSignOut}
+        >
+          Sign Out
+        </button>
       </div>
     </div>
   );
