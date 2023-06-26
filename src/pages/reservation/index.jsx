@@ -1,8 +1,7 @@
+/*eslint-disable*/ 
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  Box, Center, Text, Wrap, WrapItem, VStack,
-} from '@chakra-ui/react';
+import { Box, Center, Text, Wrap, WrapItem, Flex } from '@chakra-ui/react';
 import { fetchReservations } from '../../redux/slice/reservationSlice';
 
 const Index = () => {
@@ -24,48 +23,42 @@ const Index = () => {
           reservations.map((reservation) => (
             <WrapItem key={reservation.id}>
               <Box
+                maxW="sm"
                 borderWidth="1px"
                 borderRadius="lg"
-                p={4}
-                maxW="sm"
-                w="100%"
-                boxShadow="lg"
+                overflow="hidden"
+                shadow="md"
               >
-                <VStack spacing={4}>
-                  <Text fontWeight="bold">
-                    Reservation ID:
-                    {' '}
-                    {reservation.id}
-                  </Text>
-                  <Text>
-                    Event ID:
-                    {reservation?.event_id}
-                  </Text>
-                  <Text>
-                    User ID:
-                    {reservation?.user_id}
-                  </Text>
-                  <Text>
-                    Quantity:
-                    {reservation?.quantity}
-                  </Text>
-                  <Text>
-                    Price: $
-                    {reservation?.price?.toFixed(2)}
-                  </Text>
-                  <Text>
-                    Ticket Type:
-                    {reservation?.ticket_type}
-                  </Text>
-                  <Text>
-                    {`Booked At: 
-                    ${formatDateTime(reservation?.created_at)}`}
-                  </Text>
-                  <Text>
-                    Updated At:
-                    {reservation?.updated_at}
-                  </Text>
-                </VStack>
+                 <img src={reservation.ticket.event.images} alt="Event Image" mt="4" />
+                <Flex direction="column" p="4">
+                  <Box mt="4">
+                    <Text fontSize="lg" fontWeight="bold" mb="2">
+                      Ticket Details
+                    </Text>
+
+                    <Flex align="center" mb="2">
+                      <Text fontWeight="bold">Ticket Type:</Text>
+                      <Text ml="2">{reservation.ticket.ticket_type}</Text>
+                    </Flex>
+
+                    <Flex align="center" mb="2">
+                      <Text fontWeight="bold">Quantity:</Text>
+                      <Text ml="2">{reservation.ticket.quantity}</Text>
+                    </Flex>
+
+                    <Flex align="center" mb="2">
+                      <Text fontWeight="bold">Price:</Text>
+                      <Text ml="2">${reservation.ticket.price}</Text>
+                    </Flex>
+                  </Box>
+
+                  <Box mt="4">
+                    <Text fontSize="md"fontWeight="bold" mb="2">
+                      {reservation.ticket.event.title}
+                    </Text>
+                    <Text fontSize="sm">{reservation.ticket.event.description}</Text>
+                  </Box>
+                </Flex>
               </Box>
             </WrapItem>
           ))
