@@ -9,6 +9,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function DeleteModal({
   isOpen, onClose, onDelete, data,
@@ -22,12 +23,11 @@ function DeleteModal({
         <ModalBody pb={6}>
           Are you sure you want to delete
           <b>{data.title}</b>
-          {' '}
           event?
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="red" mr={3} onClick={(e) => onDelete(data.id)}>
+          <Button colorScheme="red" mr={3} onClick={() => onDelete(data.id)}>
             Delete
           </Button>
           <Button onClick={onClose}>Cancel</Button>
@@ -36,5 +36,15 @@ function DeleteModal({
     </Modal>
   );
 }
+
+DeleteModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  data: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default DeleteModal;

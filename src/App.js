@@ -78,5 +78,9 @@ function RequireAuth({ children }) {
     return <Navigate to="/signin" state={{ from: location }} replace />;
   }
 
-  return <>{ children }</>;
+  return <>{children}</>;
 }
+
+RequireAuth.propTypes = {
+  children: PropTypes.node.isRequired,
+};

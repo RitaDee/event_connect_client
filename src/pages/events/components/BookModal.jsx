@@ -15,6 +15,7 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { createReservation } from '../../../redux/slice/reservationSlice';
 
 const initialValues = {
@@ -22,10 +23,9 @@ const initialValues = {
   ticket_id: null,
 };
 
-const ModalComponent = ({ isOpen, onClose, onOpen }) => {
+const ModalComponent = ({ isOpen, onClose }) => {
   const [state, setState] = useState(initialValues);
   const tickets = useSelector((state) => state.tickets.data);
-  console.log(tickets, 'tickets');
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const dispatch = useDispatch();
@@ -34,7 +34,6 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
 
   const handleSubmit = async () => {
     const res = await dispatch(createReservation(state));
-    console.log(res, 'resps');
     if (res.payload.status === 201) {
       toast({
         description: 'Ticket has been reserved for you successfully',
@@ -81,10 +80,11 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
               required
             >
               {tickets?.map((item) => (
-                <option value={item.id}>
+                <option key={item.id} value={item.id}>
                   {item.ticket_type}
                   {' '}
-                  ($
+                  (
+                  $
                   {item.price}
                   )
                 </option>
@@ -102,6 +102,11 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
       </ModalContent>
     </Modal>
   );
+};
+
+ModalComponent.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default ModalComponent;

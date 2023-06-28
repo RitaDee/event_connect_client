@@ -15,6 +15,7 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { createTicket } from '../redux/slice/ticketSlice';
 
 const initialValues = {
@@ -25,7 +26,7 @@ const initialValues = {
   ticket_type: '',
 };
 
-const ModalComponent = ({ isOpen, onClose, onOpen }) => {
+const ModalComponent = ({ isOpen, onClose }) => {
   const [state, setState] = useState(initialValues);
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
@@ -129,6 +130,11 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
       </ModalContent>
     </Modal>
   );
+};
+
+ModalComponent.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default ModalComponent;
