@@ -1,35 +1,6 @@
-/* eslint-disable no-unused-vars */
-// /* eslint-disable import/extensions */
-// import { Routes, Route } from 'react-router-dom';
-// import EventDetails from './pages/events/EventDetails';
-// import Layout from './components/Layout';
-// import Body from './components/Body';
-// import SignIn from './components/SigIn';
-// import SignUp from './components/SignUp';
-// import Events from './pages/events';
-// import Reservations from './pages/reservation';
-// import EventForm from './pages/events/CreateEvent';
-
-// function App() {
-//   return (
-//     <Routes>
-//       <Route path="/" element={<Body />} />
-//       <Route path="/signin" element={<SignIn />} />
-//       <Route path="/signup" element={<SignUp />} />
-//       <Route path="/" element={<Layout />}>
-//         <Route path="/events" element={<Events />} />
-//         <Route path="/add_event" element={<EventForm />} />
-//         <Route path="/events/:id" element={<EventDetails />} />
-//         <Route path="/reservations" element={<Reservations />} />
-//       </Route>
-//     </Routes>
-//   );
-// }
-
-// export default App;
-
+/*eslint-disable*/
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import EventDetails from './pages/events/EventDetails';
 import Layout from './components/Layout';
@@ -45,7 +16,7 @@ const ProtectedRoute = ({ path, element: Component }) => {
 
   useEffect(() => {
     // Check authentication state (e.g., from session storage or global state)
-    const token = sessionStorage.getItem('token');
+    const token = sessionStorage.getItem('userId');
     setIsAuthenticated(!!token); // Set isAuthenticated to true if token exists
   }, []);
 
@@ -68,15 +39,39 @@ function App() {
       <Route path="/" element={<Body />} />
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/" element={<Layout />}>
+      <Route
+        path="/"
+        element={
+          <RequireAuth>
+            <Layout />
+          </RequireAuth>
+        }
+      >
         <Route path="/events" element={<Events />} />
         <Route path="/add_event" element={<EventForm />} />
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/reservations" element={<Reservations />} />
       </Route>
-      <Route path="/protected" element={<ProtectedRoute path="/" element={Body} />} />
+      <Route
+        path="/protected"
+        element={<ProtectedRoute path="/" element={Body} />}
+      />
     </Routes>
   );
 }
 
 export default App;
+
+function RequireAuth({ children }) {
+  let location = useLocation();
+
+  if (!sessionStorage.userId) {
+    // Redirect them to the /login page, but save the current location they were
+    // trying to go to when they were redirected. This allows us to send them
+    // along to that page after they login, which is a nicer user experience
+    // than dropping them off on the home page.
+    return <Navigate to="/signin" state={{ from: location }} replace />;
+  }
+
+  return <>{ children }</>;
+}
