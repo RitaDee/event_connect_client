@@ -13,29 +13,9 @@ const SignUpComponent = () => {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  //   const handleSignUp = async () => {
-  //     try {
-  //       const response = await axios.post('http://localhost:3000/api/v1/users', {
-  //         user: {
-  //           name,
-  //           email,
-  //           password,
-  //           password_confirmation: passwordConfirmation,
-  //         },
-  //       });
-  //       console.log('Sign up successful:', response.data);
-  //       // Update message state with the success message from response
-  //       setMessage(response.data.http_status.message || '');
-  //     } catch (error) {
-  //       console.error('Sign up failed:', error);
-  //       // Update message state with the error message from response
-  //       setMessage(error.response.data.http_status.errors || 'Sign up failed');
-  //     }
-  //   };
-
   const handleSignUp = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/v1/users', {
+      const response = await axios.post(' https://event-connect.onrender.com/api/v1/users', {
         user: {
           name,
           email,

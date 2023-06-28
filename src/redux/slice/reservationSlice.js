@@ -2,7 +2,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const apiUrl = 'http://127.0.0.1:3000/api/v1/reservations';
+const apiUrl = ' https://event-connect.onrender.com/api/v1/reservations';
 
 export const fetchReservations = createAsyncThunk(
   'reservation/fetchReservations',
