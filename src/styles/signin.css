@@ -61,21 +61,20 @@
 }
 
 .sign-up-link {
-  margin: 0px;
+  margin: 0;
   border: none;
   background-color: #96bf00;
   height: 45px;
   width: 120px;
   border-radius: 25px;
   color: white;
-  margin-top:-20px;
+  margin-top: -20px;
 }
 
-a.sign-up-link{
-    text-decoration: inherit;
-    text-align: center;
-    padding-top: 10px;
-
+a.sign-up-link {
+  text-decoration: inherit;
+  text-align: center;
+  padding-top: 10px;
 }
 
 @media only screen and (max-width: 600px) {
