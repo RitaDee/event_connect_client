@@ -17,7 +17,7 @@ export const createTicket = createAsyncThunk(
   'ticket/createTicket',
   async (data) => {
     const response = await axios.post(`${apiUrl}`, { ticket: data });
-    return response;
+    return response.data;
   }
 );
 
@@ -52,6 +52,7 @@ const ticketSlice = createSlice({
       })
       .addCase(createTicket.fulfilled, (state, action) => {
         state.loading = false;
+        console.log( [...state.data, action.payload], "tdggd")
         state.data = [...state.data, action.payload]
         state.status = action.payload.status;
       })
