@@ -3,8 +3,6 @@ import { Link as link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Box,
-  Icon,
-  IconButton,
   Card,
   Image,
   Heading,
@@ -12,9 +10,7 @@ import {
   Flex,
   Link,
 } from '@chakra-ui/react';
-import {
-  FaPlay, FaTwitter, FaInstagram, FaFacebook,
-} from 'react-icons/fa';
+import { FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa';
 import styled from 'styled-components';
 import {
   CarouselProvider,
@@ -27,6 +23,8 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import dots from '../../assets/dots.png';
 import '../../styles/main.css';
 import { fetchEvents } from '../../redux/slice/eventSlice';
+import arrowLeft from '../../assets/arrow-left.png';
+import arrowRight from '../../assets/arrow-right.png';
 
 const SocialIcons = () => (
   <Flex mt={4} justify="center">
@@ -98,20 +96,12 @@ const Index = () => {
           </Slider>
           <ButtonBack>
             <StyledDivLeft>
-              <StyledIconButtonLeft
-                icon={
-                  <Icon as={FaPlay} boxSize={16} rounded="full" color="white" />
-                }
-              />
+              <Image src={arrowLeft} alt="Left Button" />
             </StyledDivLeft>
           </ButtonBack>
           <ButtonNext>
             <StyledDivRight>
-              <StyledIconButtonRight
-                icon={
-                  <Icon as={FaPlay} boxSize={16} rounded="full" color="white" />
-                }
-              />
+              <Image src={arrowRight} alt="Right Button" />
             </StyledDivRight>
           </ButtonNext>
         </CarouselProvider>
@@ -127,28 +117,6 @@ const StyledContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-`;
-
-const StyledIconButtonLeft = styled(IconButton)`
-  background-color: grey;
-  border: none;
-  width: 100px;
-  height: 50px;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
-  position: absolute;
-  top: 50%;
-  left: 0 !important;
-  display: block;
-`;
-const StyledIconButtonRight = styled(IconButton)`
-  background-color: limegreen;
-  border: none;
-  width: 100px;
-  height: 50px;
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
-  display: block;
 `;
 
 const StyledDivLeft = styled.div`

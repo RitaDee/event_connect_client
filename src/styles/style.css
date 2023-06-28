@@ -85,6 +85,13 @@ body {
   text-decoration: none;
 }
 
+.sidebar-item button{
+  font-size: 15px;
+  font-weight: 600;
+  color: black;
+  padding-left: 0;
+}
+
 .link {
   text-decoration: none;
   color: black;

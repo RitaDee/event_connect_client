@@ -46,14 +46,18 @@ const SideBar = () => {
             MY RESERVATIONS
           </Link>
         </li>
+        <li className="sidebar-item">
+          <Link to="/reservations" className="link">
+            <button
+              type="button"
+              className="link sign-out-side"
+              onClick={handleSignOut}
+            >
+              SIGN OUT
+            </button>
+          </Link>
+        </li>
       </ul>
-      <button
-        type="button"
-        className="link sign-out-side"
-        onClick={handleSignOut}
-      >
-        Sign Out
-      </button>
     </nav>
   );
 };
