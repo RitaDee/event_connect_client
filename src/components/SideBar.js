@@ -32,7 +32,7 @@ const SideBar = () => {
           </Link>
         </li>
         <li className="sidebar-item">
-          <Link to="/events/delete" className="link">
+          <Link to="/delete" className="link">
             DELETE EVENT
           </Link>
         </li>

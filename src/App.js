@@ -11,6 +11,7 @@ import Events from './pages/events';
 import Reservations from './pages/reservation';
 import EventForm from './pages/events/CreateEvent';
 import Reserve from './pages/Reserve';
+import DeleteEvent from './pages/events/DeleteEvent';
 
 const ProtectedRoute = ({ path, element: Component }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -53,6 +54,7 @@ function App() {
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/reservations" element={<Reservations />} />
         <Route path="/reserve" element={<Reserve />} />
+        <Route path="/delete" element={<DeleteEvent />} />
       </Route>
       <Route
         path="/protected"
