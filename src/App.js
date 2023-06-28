@@ -10,6 +10,7 @@ import SignUp from './components/SignUp';
 import Events from './pages/events';
 import Reservations from './pages/reservation';
 import EventForm from './pages/events/CreateEvent';
+import Reserve from './pages/Reserve';
 
 const ProtectedRoute = ({ path, element: Component }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -51,6 +52,7 @@ function App() {
         <Route path="/add_event" element={<EventForm />} />
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/reservations" element={<Reservations />} />
+        <Route path="/reserve" element={<Reserve />} />
       </Route>
       <Route
         path="/protected"
