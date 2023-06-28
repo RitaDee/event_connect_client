@@ -51,7 +51,6 @@ const EventForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await dispatch(createEvent(eventData));
-    console.log(res, 'response');
     if (res.payload) {
       toast({
         description: 'Event has been reserved for you successfully',
