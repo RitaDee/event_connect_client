@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -13,9 +12,9 @@ import {
   FormControl,
   FormLabel,
   Select,
+  useToast,
 } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
-import { useToast } from '@chakra-ui/react';
 import { createReservation } from '../../../redux/slice/reservationSlice';
 
 const initialValues = {
@@ -26,7 +25,7 @@ const initialValues = {
 const ModalComponent = ({ isOpen, onClose, onOpen }) => {
   const [state, setState] = useState(initialValues);
   const tickets = useSelector((state) => state.tickets.data);
-  console.log(tickets, "tickets")
+  console.log(tickets, 'tickets');
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const dispatch = useDispatch();
@@ -35,20 +34,20 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
 
   const handleSubmit = async () => {
     const res = await dispatch(createReservation(state));
-    console.log(res, "resps")
+    console.log(res, 'resps');
     if (res.payload.status === 201) {
       toast({
-        description: `Ticket has been reserved for you successfully`,
+        description: 'Ticket has been reserved for you successfully',
         status: 'success',
         title: 'Ticket Reserved',
-        position:'top'
+        position: 'top',
       });
     } else {
       toast({
         description: res.error.message,
         status: 'error',
         title: 'Ticket not Reserved',
-        position:'top'
+        position: 'top',
       });
     }
     onClose();
@@ -78,14 +77,16 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
             <Select
               placeholder="Select Ticket"
               value={state.ticket_id}
-              onChange={(e) =>
-                setState((prev) => ({ ...prev, ticket_id: e.target.value }))
-              }
+              onChange={(e) => setState((prev) => ({ ...prev, ticket_id: e.target.value }))}
               required
             >
               {tickets?.map((item) => (
                 <option value={item.id}>
-                  {item.ticket_type} (${item.price})
+                  {item.ticket_type}
+                  {' '}
+                  ($
+                  {item.price}
+                  )
                 </option>
               ))}
             </Select>

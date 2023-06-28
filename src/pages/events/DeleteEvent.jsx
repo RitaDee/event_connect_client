@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -10,8 +9,8 @@ import {
   Text,
   Grid,
   useDisclosure,
+  useToast,
 } from '@chakra-ui/react';
-import { FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa';
 import styled from 'styled-components';
 
 import 'pure-react-carousel/dist/react-carousel.es.css';
@@ -19,29 +18,28 @@ import dots from '../../assets/dots.png';
 import '../../styles/main.css';
 import { fetchEvents, deleteEvent } from '../../redux/slice/eventSlice';
 import DeleteModal from './components/DeleteModal';
-import { useToast } from '@chakra-ui/react';
 
 const DeleteEvent = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [event, setEvent] = useState({});
   const events = useSelector((state) => state.events.data);
   const dispatch = useDispatch();
-  const toast = useToast()
+  const toast = useToast();
 
   useEffect(() => {
     dispatch(fetchEvents());
   }, [dispatch]);
 
   const handleDelete = (eventId) => {
-    dispatch(deleteEvent(eventId))
-    onClose()
+    dispatch(deleteEvent(eventId));
+    onClose();
     toast({
       description: 'Event has been deleted successfully',
       status: 'success',
       title: 'Event Deleted',
       position: 'top',
     });
-    onClose()
+    onClose();
   };
 
   const handleModal = (id, title) => {
@@ -65,12 +63,12 @@ const DeleteEvent = () => {
           gap={4}
           width={['100%', '100%', 'auto']}
         >
-          {events.map((item, idx) => (
+          {events.map((item) => (
             <StyledCard
               boxShadow="md"
               borderRadius="md"
               border="none"
-              key={idx}
+              key={item.id}
             >
               <Image
                 src={item.images}

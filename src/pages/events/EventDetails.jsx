@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
@@ -14,12 +13,12 @@ import {
   Container,
 } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
+import { styled } from 'styled-components';
 import ProgressBar from '../../components/circularBar';
 import { fetchEventDetail } from '../../redux/slice/eventDetailSlice';
 import left from '../../assets/arrow-left.png';
-import { styled } from 'styled-components';
 import Modal from '../../components/Modal';
-import BookModal from './components/BookModal'
+import BookModal from './components/BookModal';
 import { fetchtickets } from '../../redux/slice/ticketSlice';
 
 const EventDetails = () => {
@@ -29,18 +28,17 @@ const EventDetails = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isOpenBook, onOpen: onOpenBook, onClose: onCloseBook } = useDisclosure();
 
-
   const eventsContainerRef = useRef(null);
 
   useEffect(() => {
     dispatch(fetchEventDetail(id));
-    dispatch(fetchtickets(id))
+    dispatch(fetchtickets(id));
   }, [dispatch, id]);
 
   const scrollLeft = () => {
     if (eventsContainerRef.current) {
-      eventsContainerRef.current.scrollLeft -=
-        eventsContainerRef.current.offsetWidth / 3;
+      eventsContainerRef.current.scrollLeft
+        -= eventsContainerRef.current.offsetWidth / 3;
     }
   };
 
@@ -48,7 +46,8 @@ const EventDetails = () => {
     <Container maxW="90%" py={20}>
       <Grid templateColumns="repeat(3, 1fr)" gap={4}>
         <GridItem colSpan={2}>
-          <Image src={event?.images} />{' '}
+          <Image src={event?.images} />
+          {' '}
         </GridItem>
         <GridItem justifySelf="end">
           <Box p={4} textAlign="right">

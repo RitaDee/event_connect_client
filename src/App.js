@@ -1,6 +1,7 @@
-/*eslint-disable*/
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import {
+  Routes, Route, Navigate, useLocation,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import EventDetails from './pages/events/EventDetails';
 import Layout from './components/Layout';
@@ -43,11 +44,11 @@ function App() {
       <Route path="/signup" element={<SignUp />} />
       <Route
         path="/"
-        element={
+        element={(
           <RequireAuth>
             <Layout />
           </RequireAuth>
-        }
+        )}
       >
         <Route path="/events" element={<Events />} />
         <Route path="/add_event" element={<EventForm />} />
@@ -67,7 +68,7 @@ function App() {
 export default App;
 
 function RequireAuth({ children }) {
-  let location = useLocation();
+  const location = useLocation();
 
   if (!sessionStorage.userId) {
     // Redirect them to the /login page, but save the current location they were

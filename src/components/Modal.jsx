@@ -1,6 +1,4 @@
-/*eslint-disable*/
 import React, { useState, useEffect } from 'react';
-import { createTicket } from '../redux/slice/ticketSlice';
 import { useDispatch } from 'react-redux';
 import {
   Modal,
@@ -14,9 +12,10 @@ import {
   FormControl,
   FormLabel,
   Input,
+  useToast,
 } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
-import { useToast } from '@chakra-ui/react';
+import { createTicket } from '../redux/slice/ticketSlice';
 
 const initialValues = {
   user_id: null,
@@ -31,14 +30,14 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const dispatch = useDispatch();
-  const toast = useToast()
+  const toast = useToast();
   const { id } = useParams();
 
   const handleChange = (e) => {
     setState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async() => {
+  const handleSubmit = async () => {
     if (!state.price || !state.quantity || !state.ticket_type) {
       toast({
         description: 'Please fill in all the required fields',
@@ -49,23 +48,22 @@ const ModalComponent = ({ isOpen, onClose, onOpen }) => {
       return; // Prevent form submission
     }
     const res = await dispatch(createTicket(state));
-    if(res){
+    if (res) {
       toast({
         description: `${state.ticket_type} ticket has been created`,
-        status: "success",
-        title: "Ticket Created",
-        position: "top"
+        status: 'success',
+        title: 'Ticket Created',
+        position: 'top',
       });
-    }
-    else {
+    } else {
       toast({
         description: `${state.ticket_type} could not be created`,
-        status: "error",
-        title: "Ticket not Created",
-        position: "top"
+        status: 'error',
+        title: 'Ticket not Created',
+        position: 'top',
       });
     }
-    onClose()
+    onClose();
   };
 
   useEffect(() => {

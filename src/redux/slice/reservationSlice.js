@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -10,7 +9,7 @@ export const fetchReservations = createAsyncThunk(
     const response = await axios.get(`${apiUrl}`);
     const data = response.data.filter((item) => item.user_id === Number(id));
     return data;
-  }
+  },
 );
 
 export const createReservation = createAsyncThunk(
@@ -18,7 +17,7 @@ export const createReservation = createAsyncThunk(
   async (data) => {
     const response = await axios.post(`${apiUrl}`, { reservation: data });
     return response;
-  }
+  },
 );
 
 const reservationSlice = createSlice({

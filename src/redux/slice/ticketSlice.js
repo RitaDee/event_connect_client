@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -10,7 +9,7 @@ export const fetchtickets = createAsyncThunk(
     const response = await axios.get(`${apiUrl}`);
     const data = response.data.filter((item) => item.event_id === Number(id));
     return data;
-  }
+  },
 );
 
 export const createTicket = createAsyncThunk(
@@ -18,9 +17,8 @@ export const createTicket = createAsyncThunk(
   async (data) => {
     const response = await axios.post(`${apiUrl}`, { ticket: data });
     return response.data;
-  }
+  },
 );
-
 
 const ticketSlice = createSlice({
   name: 'tickets',
@@ -52,8 +50,8 @@ const ticketSlice = createSlice({
       })
       .addCase(createTicket.fulfilled, (state, action) => {
         state.loading = false;
-        console.log( [...state.data, action.payload], "tdggd")
-        state.data = [...state.data, action.payload]
+        console.log([...state.data, action.payload], 'tdggd');
+        state.data = [...state.data, action.payload];
         state.status = action.payload.status;
       })
       .addCase(createTicket.rejected, (state, action) => {
