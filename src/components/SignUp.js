@@ -46,7 +46,7 @@ const SignUpComponent = () => {
       console.log('Sign up successful:', response.data);
       // Update message state with the success message from response
       setMessage('Sign up successful');
-      navigate('/main');
+      navigate('/events');
     } catch (error) {
       console.error('Sign up failed:', error);
       // Update message state with the error message from response

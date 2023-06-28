@@ -75,7 +75,7 @@
 
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/signin.css';
 
@@ -171,13 +171,14 @@ const SignInComponent = () => {
         <button className="sign-in-button" type="button" onClick={handleSignIn}>
           Sign In
         </button>
-        <button
+        {/* <button
           className="sign-out-button"
           type="button"
           onClick={handleSignOut}
         >
           Sign Out
-        </button>
+        </button> */}
+        <Link to="/signup" className="sign-up-link">Sign Up</Link>
       </div>
     </div>
   );
