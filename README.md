@@ -115,26 +115,12 @@ Install this project with:
  $ npm install
 ```
 
-### Then run it in your browser with this command:
-
-```
-$ npm run dev
-```
-
 ### Usage
 
 To run the project, execute the following command:
 
 ```sh
   $ npm start
-```
-
-### Run tests
-
-To run tests, run the following command:
-
-```sh
-  $ npm run test
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
