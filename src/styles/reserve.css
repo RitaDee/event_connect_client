@@ -1,0 +1,120 @@
+/* .redirect-section {
+  padding-top: 60px;
+  padding-left: 190px;
+  text-align: center;
+}
+
+.redirect-list-title {
+  font-size: 25px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-left: -200px;
+}
+
+.redirect-list-subtitle {
+  font-weight: 400;
+  color: #c4c4c4;
+  font-size: 12px;
+  padding-bottom: 20px;
+  margin-left: -230px;
+}
+
+@media only screen and (max-width: 600px) {
+  .redirect-section {
+    padding-top: 60px;
+    padding-left: 0;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .redirect-section {
+    padding-top: 60px;
+    padding-left: 0;
+  }
+}
+
+.redirect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.redirect-link {
+  display: inline-block;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #007bff;
+  padding: 10px 20px;
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.redirect-link:hover {
+  background-color: #0056b3;
+} */
+.redirect-section {
+  padding-top: 60px;
+  padding-left: 190px;
+  text-align: center;
+}
+
+.redirect-list-title {
+  font-size: 25px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-left: -200px;
+}
+
+.redirect-list-subtitle {
+  font-weight: 400;
+  color: #c4c4c4;
+  font-size: 12px;
+  padding-bottom: 20px;
+  margin-left: -230px;
+}
+
+@media only screen and (max-width: 800px) {
+  .redirect-section {
+    padding-left: 0;
+  }
+
+  .redirect-list-title {
+    margin-left: 0;
+  }
+
+  .redirect-list-subtitle {
+    margin-left: 0;
+  }
+}
+
+.redirect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.redirect-link {
+  display: inline-block;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #007bff;
+  padding: 10px 20px;
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.redirect-link:hover {
+  background-color: #0056b3;
+}

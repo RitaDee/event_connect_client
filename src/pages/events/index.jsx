@@ -1,0 +1,159 @@
+/*eslint-disable*/
+import React, { useEffect, useState } from 'react';
+import { Link as link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Box, Card, Image, Heading, Text, Flex, Link } from '@chakra-ui/react';
+import { FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa';
+import styled from 'styled-components';
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+} from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import dots from '../../assets/dots.png';
+import '../../styles/main.css';
+import { fetchEvents } from '../../redux/slice/eventSlice';
+import arrowLeft from '../../assets/arrow-left.png';
+import arrowRight from '../../assets/arrow-right.png';
+
+const SocialIcons = () => (
+  <Flex mt={4} justify="center">
+    <Link href="https://twitter.com" mr={2}>
+      <FaTwitter size={24} />
+    </Link>
+    <Link href="https://twitter.com" mr={2}>
+      <FaInstagram size={24} />
+    </Link>
+    <Link href="https://twitter.com" mr={2}>
+      <FaFacebook size={24} />
+    </Link>
+  </Flex>
+);
+
+const Index = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+  const events = useSelector((state) => state.events.data);
+  const dispatch = useDispatch();
+
+  const handleWindowSizeChange = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchEvents());
+  }, [dispatch]);
+
+  const isMobile = width <= 798;
+  const isTablet = width >= 799 && width <= 1000;
+  const isDesktop = width >= 1208;
+
+  const getVisibleSlides = () => {
+    if (isMobile) {
+      return 1;
+    } else if (isTablet) {
+      return 2;
+    } else {
+      return 3;
+    }
+  };
+
+  return (
+    <StyledContainer>
+      <div className="main">
+        <h1 className="event-list-title">BROWSE EVENTS</h1>
+        <p className="event-list-subtitle">
+          Select a event to see details or reserve
+        </p>
+        <div className="dots-wrapper">
+          <img src={dots} alt="dots-bar" className="dots-bar" />
+        </div>
+        <CarouselProvider
+          naturalSlideWidth={100}
+          naturalSlideHeight={125}
+          totalSlides={events.length}
+          visibleSlides={getVisibleSlides()}
+          infinite
+          isIntrinsicHeight
+          lockOnWindowScroll
+        >
+          <Slider>
+            {events.map((item, idx) => (
+              <Slide index={idx} key={item.description}>
+                <Box
+                  maxWidth="400px"
+                  as={link}
+                  to={`/events/${item.id}`}
+                  cursor="pointer"
+                  textDecoration="none"
+                  _hover={{ textDecoration: 'none' }}
+                >
+                  <StyledCard boxShadow="md" borderRadius="md" border="none">
+                    <Image
+                      src={item.images}
+                      alt="Image description"
+                      borderRadius="md"
+                    />
+
+                    <Box p={4}>
+                      <Heading size="md">{item.title}</Heading>
+
+                      <Text mt={2}>{item.description.substring(0, 20)}</Text>
+
+                      <SocialIcons />
+                    </Box>
+                  </StyledCard>
+                </Box>
+              </Slide>
+            ))}
+          </Slider>
+          <ButtonBack>
+            <StyledDivLeft>
+              <Image src={arrowLeft} alt="Left Button" />
+            </StyledDivLeft>
+          </ButtonBack>
+          <ButtonNext>
+            <StyledDivRight>
+              <Image src={arrowRight} alt="Right Button" />
+            </StyledDivRight>
+          </ButtonNext>
+        </CarouselProvider>{' '}
+      </div>
+    </StyledContainer>
+  );
+};
+
+export default Index;
+
+const StyledContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
+
+const StyledDivLeft = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 0 !important;
+`;
+const StyledDivRight = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 0 !important;
+`;
+
+const StyledCard = styled(Card)`
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: 0 10px;
+  height: 400px;
+`;
