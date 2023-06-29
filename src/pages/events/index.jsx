@@ -1,15 +1,8 @@
-import React, { useEffect } from 'react';
+/*eslint-disable*/
+import React, { useEffect, useState } from 'react';
 import { Link as link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  Box,
-  Card,
-  Image,
-  Heading,
-  Text,
-  Flex,
-  Link,
-} from '@chakra-ui/react';
+import { Box, Card, Image, Heading, Text, Flex, Link } from '@chakra-ui/react';
 import { FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa';
 import styled from 'styled-components';
 import {
@@ -41,12 +34,38 @@ const SocialIcons = () => (
 );
 
 const Index = () => {
+  const [width, setWidth] = useState(window.innerWidth);
   const events = useSelector((state) => state.events.data);
   const dispatch = useDispatch();
+
+  const handleWindowSizeChange = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    };
+  }, []);
 
   useEffect(() => {
     dispatch(fetchEvents());
   }, [dispatch]);
+
+  const isMobile = width <= 798;
+  const isTablet = width >= 799 && width <= 1000;
+  const isDesktop = width >= 1208;
+
+  const getVisibleSlides = () => {
+    if (isMobile) {
+      return 1;
+    } else if (isTablet) {
+      return 2;
+    } else {
+      return 3;
+    }
+  };
 
   return (
     <StyledContainer>
@@ -61,8 +80,11 @@ const Index = () => {
         <CarouselProvider
           naturalSlideWidth={100}
           naturalSlideHeight={125}
-          totalSlides={20}
-          visibleSlides={3}
+          totalSlides={events.length}
+          visibleSlides={getVisibleSlides()}
+          infinite
+          isIntrinsicHeight
+          lockOnWindowScroll
         >
           <Slider>
             {events.map((item, idx) => (
@@ -85,7 +107,7 @@ const Index = () => {
                     <Box p={4}>
                       <Heading size="md">{item.title}</Heading>
 
-                      <Text mt={2}>{item.description}</Text>
+                      <Text mt={2}>{item.description.substring(0, 20)}</Text>
 
                       <SocialIcons />
                     </Box>
@@ -104,8 +126,7 @@ const Index = () => {
               <Image src={arrowRight} alt="Right Button" />
             </StyledDivRight>
           </ButtonNext>
-        </CarouselProvider>
-        {' '}
+        </CarouselProvider>{' '}
       </div>
     </StyledContainer>
   );

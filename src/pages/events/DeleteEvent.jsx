@@ -52,7 +52,7 @@ const DeleteEvent = () => {
       <div className="main">
         <h1 className="event-list-title">BROWSE EVENTS</h1>
         <p className="event-list-subtitle">
-          Select an event to see details or reserve
+          Select an event to Delete
         </p>
         <div className="dots-wrapper">
           <img src={dots} alt="dots-bar" className="dots-bar" />

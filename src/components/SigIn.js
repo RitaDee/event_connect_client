@@ -27,7 +27,7 @@ const SignInComponent = () => {
         },
       );
 
-      const { message, user } = response.data;
+      const { user } = response.data;
 
       // Extract authorization token from response and store it locally
       const token = response.headers.authorization;
@@ -40,7 +40,6 @@ const SignInComponent = () => {
     }
   };
 
-  // Function to sign out
   const handleSignOut = async () => {
     const thetoken = sessionStorage.getItem('token');
     try {

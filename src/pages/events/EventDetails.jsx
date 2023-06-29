@@ -44,7 +44,7 @@ const EventDetails = () => {
 
   return (
     <Container maxW="90%" py={20}>
-      <Grid templateColumns="repeat(3, 1fr)" gap={4}>
+      <Grid templateColumns={{ base: '1fr', md: 'repeat(3, 1fr)' }} gap={4}>
         <GridItem colSpan={2}>
           <Image src={event?.images} />
           {' '}

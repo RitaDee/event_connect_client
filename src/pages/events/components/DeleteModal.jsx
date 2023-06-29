@@ -11,31 +11,29 @@ import {
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function DeleteModal({
+const DeleteModal = ({
   isOpen, onClose, onDelete, data,
-}) {
-  return (
-    <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Create your account</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody pb={6}>
-          Are you sure you want to delete
-          <b>{data.title}</b>
-          event?
-        </ModalBody>
+}) => (
+  <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+    <ModalOverlay />
+    <ModalContent>
+      <ModalHeader>Create your account</ModalHeader>
+      <ModalCloseButton />
+      <ModalBody pb={6}>
+        Are you sure you want to delete
+        <b>{data.title}</b>
+        event?
+      </ModalBody>
 
-        <ModalFooter>
-          <Button colorScheme="red" mr={3} onClick={() => onDelete(data.id)}>
-            Delete
-          </Button>
-          <Button onClick={onClose}>Cancel</Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
-  );
-}
+      <ModalFooter>
+        <Button colorScheme="red" mr={3} onClick={() => onDelete(data.id)}>
+          Delete
+        </Button>
+        <Button onClick={onClose}>Cancel</Button>
+      </ModalFooter>
+    </ModalContent>
+  </Modal>
+);
 
 DeleteModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,

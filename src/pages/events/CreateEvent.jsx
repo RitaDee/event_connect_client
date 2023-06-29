@@ -53,7 +53,7 @@ const EventForm = () => {
     const res = await dispatch(createEvent(eventData));
     if (res.payload) {
       toast({
-        description: 'Event has been reserved for you successfully',
+        description: 'Event has been create successfully',
         status: 'success',
         title: 'Event Created',
         position: 'top',
@@ -62,7 +62,7 @@ const EventForm = () => {
       toast({
         description: res.error.message,
         status: 'error',
-        title: 'Ticket not Reserved',
+        title: 'Eventt not created',
         position: 'top',
       });
     }

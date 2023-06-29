@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/signup.css';
@@ -20,13 +19,14 @@ const SignUpComponent = () => {
           password,
         },
       });
-      _ = response;
       // Update message state with the success message from response
       setMessage('Sign up successful');
       navigate('/events');
+      return response;
     } catch (error) {
       // Update message state with the error message from response
       setMessage('Sign up failed');
+      return error;
     }
   };
 
