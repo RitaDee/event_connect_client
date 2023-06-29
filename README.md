@@ -1,70 +1,207 @@
-# Getting Started with Create React App
+<a name="readme-top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center" font-size="30px">
+  <h3><b>Event Connect</b></h3>
+</div>
 
-## Available Scripts
+# 📗 Table of Contents
 
-In the project directory, you can run:
+- [📖 About the Project](#about-project)
+- [Kanban Board](#kanban-board)
+  - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+  - [🚀 Live Demo](#live-demo)
+- [💻 Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
+  - [Deployment](#triangular_flag_on_post-deployment)
+- [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
+- [🤝 Contributing](#contributing)
+- [⭐️ Show your support](#support)
+- [🙏 Acknowledgements](#acknowledgements)
+- [❓ FAQ (OPTIONAL)](#faq)
+- [📝 License](#license)
 
-### `npm start`
+# 📖 Event Connect
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<a name="about-project"></a>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Event Connect** is an application which allows users to create,delete and reserve event. A user also can reserve available event.
 
-### `npm test`
+## Front End app <a name="front-end-repo"></a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Click this [link](https://github.com/RitaDee/event_connect_client) to access the front end app that was built using react.
 
-### `npm run build`
+- Click this [link](https://github.com/RitaDee/event_connect_client/pull/8) to access the front end app pull request.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Kanban Board
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Click this [link](https://github.com/users/RitaDee/projects/12)
+- Click this [link](<Screenshot (438).png>) to view the initial screenshot of the project Kanban Board.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Team members: 4 (Rita Daniel, Jugoslav Achkoski, Ayo Moses, Lukman Abdulkareem)
 
-### `npm run eject`
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🛠 Built With <a name="built-with"></a>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Programming Languages: HTML, CSS, JavaScript.
+- Frameworks: React, Redux, and CHAKRA.
+- Code Editor: VS Code, or Any.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Tech Stack <a name="tech-stack"></a>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<details>
+  <summary>Linters</summary>
+  <ul>
+  <li>ESLINT</li>
+  </ul>
+</details>
 
-## Learn More
+<details>
+  <summary>Server</summary>
+  <ul>
+  <li>API</li>
+  </ul>
+</details>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<details>
+<summary>Database</summary>
+  <ul>
+  <li>PostgreSQL</li>
+  </ul>
+</details>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Key Features <a name="key-features"></a>
 
-### Code Splitting
+- **list of available events on home page**
+- **Ability to create a event**
+- **Ability to create and list all the reservations that a user has**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Analyzing the Bundle Size
+## 🚀 Live Demo <a name="live-demo"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [Clike Here!!!](https://event-connect-capstone.web.app/)
 
-### Making a Progressive Web App
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<!-- GETTING STARTED -->
 
-### Advanced Configuration
+## 💻 Getting Started <a name="getting-started"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+To get a local copy up and running, follow these steps.
 
-### Deployment
+### Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Clone this repository to your desired folder:
 
-### `npm run build` fails to minify
+```sh
+  cd PATH
+  git clone git@github.com:RitaDee/event_connect_client.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Install
+
+Install this project with:
+
+```sh
+  cd event_connect_client
+ $ npm install
+```
+
+### Then run it in your browser with this command:
+
+```
+$ npm run dev
+```
+
+### Usage
+
+To run the project, execute the following command:
+
+```sh
+  $ npm start
+```
+
+### Run tests
+
+To run tests, run the following command:
+
+```sh
+  $ npm run test
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 👥 Authors <a name="authors"></a>
+
+👤**Rita Nkem Daniel**
+
+- GitHub: [@RitaDee](https://github.com/RitaDee)
+- Twitter: [@durdana_dee](https:https://twitter.com/durdana_dee)
+- LinkedIn: [LinkedIn](https:https://www.linkedin.com/in/rita-daniel/)
+
+👤**Ayo Moses**
+
+- GitHub: [@AyoMoses1](https://github.com/AyoMoses1)
+- Twitter: [@AyoMoses](https://twitter.com/Ayo_Moses1)
+- LinkedIn: [Ayo Moses](https://www.linkedin.com/in/ayomoses/)
+
+👤 **Jugoslav Achkoski**
+
+- GitHub: [@github](https://github.com/jugosack)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/jugoslavachkoski/)
+- Twitter: [twitter](https://twitter.com/Jugoslav_A)
+
+👤 **Lukman Abdulkarim**
+
+- GitHub: [@Lukman](https://github.com/lukman155)
+- Twitter: [@Luk, A man](https://twitter.com/lukmanabdulka18)
+- LinkedIn: [Lukman Abdulkarim](https://www.linkedin.com/in/lukmanbaba/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- **Add payment feature where users can pay for their resevations and bookings**
+- **Add chatting feature among users**
+- **Add tracking feature where users can see where their event is located**
+- **Add user profile page**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/RitaDee/event_connect_client/issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## ⭐️ Show your support <a name="support"></a>
+
+If you like this project kindly give it a star ⭐️
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+I would like to thank...
+
+- [Microverse](https://www.microverse.org/) for learning the oppotunity
+
+- [Murat Korkmaz](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign) for the design.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./LICENSE) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
