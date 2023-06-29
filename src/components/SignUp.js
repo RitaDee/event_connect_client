@@ -1,5 +1,4 @@
-/* eslint-disable max-len */
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/signup.css';
@@ -9,7 +8,6 @@ const SignUpComponent = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  //   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
@@ -20,15 +18,13 @@ const SignUpComponent = () => {
           name,
           email,
           password,
-        //   password_confirmation: passwordConfirmation,
         },
       });
-      console.log('Sign up successful:', response.data);
+      _ = response;
       // Update message state with the success message from response
       setMessage('Sign up successful');
       navigate('/events');
     } catch (error) {
-      console.error('Sign up failed:', error);
       // Update message state with the error message from response
       setMessage('Sign up failed');
     }
@@ -42,7 +38,6 @@ const SignUpComponent = () => {
         <input className="name-input" type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
         <input className="email-input" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input className="password-input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        {/* <input className="password-confirmation-input" type="password" placeholder="Password Confirmation" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} /> */}
       </div>
 
       <div className="session-buttons">

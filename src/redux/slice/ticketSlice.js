@@ -50,7 +50,6 @@ const ticketSlice = createSlice({
       })
       .addCase(createTicket.fulfilled, (state, action) => {
         state.loading = false;
-        console.log([...state.data, action.payload], 'tdggd');
         state.data = [...state.data, action.payload];
         state.status = action.payload.status;
       })

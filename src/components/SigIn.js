@@ -1,7 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable max-len */
-// /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -30,12 +27,6 @@ const SignInComponent = () => {
         },
       );
 
-      console.log('Sign in response:', response);
-
-      // Check the response structure
-      console.log('Response data:', response.data);
-      console.log('Response user data:', response.data.user);
-
       const { message, user } = response.data;
 
       // Extract authorization token from response and store it locally
@@ -45,7 +36,6 @@ const SignInComponent = () => {
       setMessage('Sign in successful' || '');
       navigate('/events');
     } catch (error) {
-      console.error('Sign in failed:', error);
       setMessage('Sign in failed' || '');
     }
   };
@@ -62,11 +52,9 @@ const SignInComponent = () => {
           },
         },
       );
-      console.log('Sign out successful:', response.data);
       sessionStorage.clear();
       setMessage(response.data.message || '');
     } catch (error) {
-      console.error('Sign out failed:', error);
       setMessage('Sign out failed' || '');
 
       if (error.response && error.response.data) {
